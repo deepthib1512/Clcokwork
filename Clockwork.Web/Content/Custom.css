@@ -1,0 +1,19 @@
+﻿body {
+    background-color:lightgrey;
+}
+#headerBlock {
+    text-align: center;
+    height: 100px;
+    background-color: lightslategray;
+}
+#headerBlock h2{
+    padding:25px 5px 5px 25px;
+}
+
+#buttonsBlock {
+    text-align: center;
+}
+
+#outputBlock{
+    text-align:center;
+}

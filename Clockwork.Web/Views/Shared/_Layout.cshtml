@@ -3,8 +3,11 @@
 <head>
     <title>@ViewBag.Title</title>
     <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Custom.css">
+    
 </head>
 <body>
-	@RenderBody()
+    @RenderBody()
+    @RenderSection("scripts", required:false)
 </body>
 </html>

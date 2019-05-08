@@ -1,7 +1,8 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clockwork.API", "Clockwork.API\Clockwork.API.csproj", "{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clockwork.API", "Clockwork.API\Clockwork.API.csproj", "{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clockwork.Web", "Clockwork.Web\Clockwork.Web.csproj", "{6C746601-B1E6-4A18-8FCB-55582976384F}"
 EndProject
@@ -10,20 +11,40 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}.Debug|x86.ActiveCfg = Debug|x86
+		{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}.Debug|x86.Build.0 = Debug|x86
 		{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}.Release|x86.ActiveCfg = Release|x86
+		{1B8B9C9D-EB80-405D-A2B4-6FEE566D8EC9}.Release|x86.Build.0 = Release|x86
 		{6C746601-B1E6-4A18-8FCB-55582976384F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C746601-B1E6-4A18-8FCB-55582976384F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C746601-B1E6-4A18-8FCB-55582976384F}.Debug|x86.ActiveCfg = Debug|x86
+		{6C746601-B1E6-4A18-8FCB-55582976384F}.Debug|x86.Build.0 = Debug|x86
 		{6C746601-B1E6-4A18-8FCB-55582976384F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C746601-B1E6-4A18-8FCB-55582976384F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C746601-B1E6-4A18-8FCB-55582976384F}.Release|x86.ActiveCfg = Release|x86
+		{6C746601-B1E6-4A18-8FCB-55582976384F}.Release|x86.Build.0 = Release|x86
 		{7F442E44-EDD0-4605-BCDD-603BAA9984C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7F442E44-EDD0-4605-BCDD-603BAA9984C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F442E44-EDD0-4605-BCDD-603BAA9984C6}.Debug|x86.ActiveCfg = Debug|x86
+		{7F442E44-EDD0-4605-BCDD-603BAA9984C6}.Debug|x86.Build.0 = Debug|x86
 		{7F442E44-EDD0-4605-BCDD-603BAA9984C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F442E44-EDD0-4605-BCDD-603BAA9984C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F442E44-EDD0-4605-BCDD-603BAA9984C6}.Release|x86.ActiveCfg = Release|x86
+		{7F442E44-EDD0-4605-BCDD-603BAA9984C6}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {177DDF21-21EE-49E0-A1C6-B83BCBF8B38F}
 	EndGlobalSection
 EndGlobal

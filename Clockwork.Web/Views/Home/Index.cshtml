@@ -1,21 +1,106 @@
-﻿<script>
-function UserAction() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("output").innerHTML = this.responseText;
-        }
-    };
-    xhttp.open("GET", "http://127.0.0.1:5000/api/currenttime", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send();
+﻿
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="headerBlock">
+        <h2>AWH Clockwork Project @ViewData["Version"] on @ViewData["Runtime"]!</h2>
+    </div><br />
 
-}
-</script>
+          <div id="buttonsBlock">
+              <button type="button" class="btn btn-primary" id="currentBtn" onclick="UserAction()">Get the time</button>
+              &nbsp;&nbsp;
+              <button type="button" class="btn btn-primary" id="previousBtn" onclick="PreviousEntries()">Previous Entries</button>
+              &nbsp;&nbsp;
+              <select id="timezone" onchange="GetTimeZone()">
+                  <option value="Default" selected="selected">Current TimeZone</option>
+                  <option value="CST">Central Standard Time</option>
+                  <option value="PST">Pacific Standard Time</option>
+                  <option value="EST">Eastern Standard Time</option>
+                  <option value="EDT">Eastern Daylight Time</option>
+                  <option value="CDT">Central Daylight Time</option>
+                  <option value="PDT">Pacific Daylight Time</option>
+              </select>
+          </div>
+    <br /><br />
+   
 
-<h2>AWH Clockwork Project @ViewData["Version"] on @ViewData["Runtime"]!</h2>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="outputBlock">
+        <p id="selectedTZ"></p>
+        <p id="output">
+        </p>
+    </div>
+
+    @section scripts
+{
+        <script>
+
+            // on page load, it loads the default timezone
+            window.onload = function () {
+                var tzSelection = document.getElementById("timezone");
+                var tzVal = tzSelection.options[tzSelection.selectedIndex].value;
+                var tzText = tzSelection.options[tzSelection.selectedIndex].text;
+
+                if (tzVal == "Default") {
+                    tzText = new Date().toString().match(/\(([A-Za-z\s].*)\)/)[1];
+                }
+
+                document.getElementById("selectedTZ").innerHTML = "Selected TimeZone is <em>" + tzText + "</em>";
+            };
+
+            function GetTimeZone() {
+                tzSelection = document.getElementById("timezone");
+                tzVal = tzSelection.options[tzSelection.selectedIndex].value;
+                tzText = tzSelection.options[tzSelection.selectedIndex].text;
+                if (tzVal == "Default") {
+                    tzText = new Date().toString().match(/\(([A-Za-z\s].*)\)/)[1];
+                }
+
+                document.getElementById("selectedTZ").innerHTML = "Selected TimeZone is <em>" + tzText + "</em";
+            }
+
+            // gets the response back after inserting the data into the database
+            function UserAction() {
+                tzSelection = document.getElementById("timezone");
+                tzVal = tzSelection.options[tzSelection.selectedIndex].value;
+                if (tzVal == "Default") { tzVal = new Date().toString().match(/\(([A-Za-z\s].*)\)/)[1]; }
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+
+                        var result = JSON.parse(this.responseText);
+                        console.log(result);
+                        document.getElementById("output").innerHTML = "Client with IP address '" + result.ClientIp + "' recorded at '" + new Date(result.Time) + "' and UTCTime '" + new Date(result.UTCTime) + "'";
+                    }
+                };
+                xhttp.open("GET", "http://localhost:52241/api/currenttime/get", true);
+                xhttp.setRequestHeader("Content-type", "application/json");
+                xhttp.send();
+            }
+
+            // gets all the avaliable entries in the database
+            function PreviousEntries() {
+                
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var results = JSON.parse(this.responseText);
+                        console.log(results);
+
+                        var dataView = "<table border=1 align='center' style='padding:10px;'><tr><th>ID</th><th>ClientIP</th><th>Time</th><th>UTCTime</th></tr>";
+                        for (var eachEntry = 0; eachEntry < results.length; eachEntry++) {
+                            dataView += "<tr><td style='padding:12px;'>" + results[eachEntry].currentTimeQueryId + "</td>";
+                            dataView += "<td style='padding:12px;'>" + results[eachEntry].clientIp + "</td>";
+                            dataView += "<td style='padding:12px;'>" + new Date(results[eachEntry].time) + "</td>";
+                            dataView += "<td style='padding:12px;'>" + new Date(results[eachEntry].utcTime) + "</td></tr>";
+                        }
+                        dataView += "</table>"
+
+                        document.getElementById("output").innerHTML = dataView;
+                    }
+                };
+                xhttp.open("GET","http://localhost:52241/api/currenttime/previous" , true);
+                xhttp.setRequestHeader("Content-type", "application/json");
+                xhttp.send();
+            }
+        </script>
+    }
 
 
-<button type="submit" onclick="UserAction()">Get the time</button>
-
-<p id="output"></p>

@@ -11,7 +11,7 @@ using System;
 namespace Clockwork.API.Migrations
 {
     [DbContext(typeof(ClockworkContext))]
-    [Migration("20171207214527_InitialCreate")]
+    [Migration("20190506213015_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

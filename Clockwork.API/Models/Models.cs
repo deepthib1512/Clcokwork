@@ -6,6 +6,15 @@ namespace Clockwork.API.Models
     public class ClockworkContext : DbContext
     {
         public DbSet<CurrentTimeQuery> CurrentTimeQueries { get; set; }
+       /* private static bool dbCreated = false;
+        public ClockworkContext() {
+            if (!dbCreated)
+            {
+                dbCreated = true;
+                Database.EnsureDeleted();
+                Database.EnsureCreated();
+            }
+        }*/
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -19,5 +28,6 @@ namespace Clockwork.API.Models
         public DateTime Time { get; set; }
         public string ClientIp { get; set; }
         public DateTime UTCTime { get; set; }
+
     }
 }
